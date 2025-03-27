@@ -1,0 +1,21 @@
+{
+    "overall_resume": [
+        "Resume of someone in early years of their career, the resume should only be of one page",
+        "Resume of someone with limited work experience, the resume should first have their education history, the certifications they have acquired and the projects they have worked on",
+        "Resume should have no errors in grammar and factual information"
+    ],
+    "projects_section": [
+        "The projects mentioned in the resume should also have the tools that were used in them",
+        "The link to the project should be present for their easy access"
+    ],
+    "skills_section": [
+        "The skills whose certifications are present in the resume should be highlighted"
+    ],
+    "education_section": [
+        "Education history should have the modules that the applicant has completed rather than the results they achieved in order to not give the assessor a chance to quantify the ability of the candidate"
+    ],
+    "work_experience":[
+        "The descriptions should be short and to the point. They should quantify the effects of their work",
+        "The descriptions should follow the format of 'Did X using Y, resulting in the Z impact'"
+    ]
+}
