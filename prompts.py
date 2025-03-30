@@ -60,7 +60,22 @@ TO_BE_NOTED_EXTRACTION_PROMPT = """
     The job is {position} at {company}.
     Here is the job description: 
     {job_description}. 
-    Extract all the vital information (if any) that the candidate must note while applying for this role. This includes extra information like visa sponsorship, relocation assistance, salary or compensation details, work-mode, office location, etc to name a few.
+    Extract all the extra vital information that the candidate must note while applying for this role. Do not include any points that are not specified in the job description or cannot be deduced from the job description.
+    This includes extra information like:
+    - the name of the team in which this role is based.
+    - if the visa sponsorship will be provided or not
+    - if there will be any relocation assistance
+    - the required years of experience for the job
+    - salary or compensation details for the job
+    - the work-mode for the role: hybrid or onsite or remote
+    - if there are any travel requirements
+    - the office location for the role
+    - if there is any minimum degree requirement
+    - if there are any specific certifications required
+    - if there are any growth opportunities
+    - any benefits and perks provided with the role
+    - the contract type for the role: permanent or temprorary or contract-based
+    - any details about hiring process mentioned in the job description.
     Return only in the form of comma separated strings and no special characters and proper captialization. 
     """
 
