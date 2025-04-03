@@ -38,6 +38,16 @@
                 "domain": "ibm.com"
             },
             {
+                "name": "Workday",
+                "portal_link": "https://workday.wd5.myworkdayjobs.com/Workday",
+                "domain": "workday.com"
+            },
+            {
+                "name": "Oracle",
+                "portal_link": "https://careers.oracle.com/jobs/#en/sites/jobsearch/",
+                "domain": "oracle.com"
+            },
+            {
                 "name": "Intel",
                 "portal_link": "https://intel.wd1.myworkdayjobs.com/External",
                 "domain": "intel.com"
