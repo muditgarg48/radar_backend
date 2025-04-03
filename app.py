@@ -7,6 +7,7 @@ from flask_cors import CORS
 import os
 from io import BytesIO
 import json
+from env_loader import get_client_id
 
 app = Flask(__name__)
 CORS(app)
@@ -133,6 +134,18 @@ def get_resume_text(resume):
 # @app.route('/')
 # def start_to_run():
 #     return "The server has started!", 200
+
+@app.route('/get-apply-data')
+def get_apply_data():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(current_dir, 'data', 'apply_portals.json')
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    return data
+
+@app.route('/get-logo-client-id')
+def get_logo_client_id():
+    return get_client_id()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ['PORT'])

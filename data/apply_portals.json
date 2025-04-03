@@ -1,0 +1,427 @@
+[
+    {
+        "category": "TECH",
+        "data": [
+            {
+                "name": "Google",
+                "portal_link": "https://careers.google.com/jobs/",
+                "domain": "google.com"
+            },
+            {
+                "name": "Microsoft",
+                "portal_link": "https://careers.microsoft.com/us/en/search-results",
+                "domain": "microsoft.com"
+            },
+            {
+                "name": "Meta",
+                "portal_link": "https://www.metacareers.com/jobs/",
+                "domain": "meta.com"
+            },
+            {
+                "name": "Amazon",
+                "portal_link": "https://www.amazon.jobs/en/search",
+                "domain": "amazon.com"
+            },
+            {
+                "name": "Adobe",
+                "portal_link": "https://adobe.wd5.myworkdayjobs.com/external_experienced",
+                "domain": "adobe.com"
+            },
+            {
+                "name": "Nvidia",
+                "portal_link": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
+                "domain": "nvidia.com"
+            },
+            {
+                "name": "Intel",
+                "portal_link": "https://intel.wd1.myworkdayjobs.com/External",
+                "domain": "intel.com"
+            },
+                {
+                "name": "Qualcomm",
+                "portal_link": "https://qualcomm.wd5.myworkdayjobs.com/External",
+                "domain": "qualcomm.com"
+            },
+            {
+                "name": "Dell",
+                "portal_link": "https://jobs.dell.com/en/search-jobs",
+                "domain": "dell.com"
+            },
+                {
+                "name": "VMware",
+                "portal_link": "https://careers.vmware.com/main/jobs",
+                "domain": "vmware.com"
+            },
+            {
+                "name": "SAP",
+                "portal_link": "https://jobs.sap.com/search",
+                "domain": "sap.com"
+            },
+            {
+                "name": "MongoDB",
+                "portal_link": "https://www.mongodb.com/careers/jobs",
+                "domain": "mongodb.com"
+            },
+            {
+                "name": "Atlassian",
+                "portal_link": "https://www.atlassian.com/company/careers/all-jobs",
+                "domain": "atlassian.com"
+            },
+            {
+                "name": "Spotify",
+                "portal_link": "https://www.lifeatspotify.com/jobs",
+                "domain": "spotify.com"
+            },
+            {
+                "name": "Reddit",
+                "portal_link": "https://job-boards.greenhouse.io/reddit",
+                "domain": "reddit.com"
+            },
+            {
+                "name": "LinkedIn",
+                "portal_link": "https://www.linkedin.com/company/linkedin/jobs/",
+                "domain": "linkedin.com"
+            },
+            {
+                "name": "Zoom",
+                "portal_link": "https://zoom.wd5.myworkdayjobs.com/Zoom",
+                "domain": "zoom.us"
+            },
+            {
+                "name": "Salesforce",
+                "portal_link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site",
+                "domain": "salesforce.com"
+            },
+            {
+                "name": "Slack",
+                "portal_link": "https://slack.com/intl/en-ie/careers#openings",
+                "domain": "slack.com"
+            },
+            {
+                "name": "Dropbox",
+                "portal_link": "https://www.dropbox.com/jobs/all-jobs",
+                "domain": "dropbox.com"
+            },
+            {
+                "name": "Twilio",
+                "portal_link": "https://www.twilio.com/company/jobs#open-positions",
+                "domain": "twilio.com"
+            },
+            {
+                "name": "Cloudflare",
+                "portal_link": "https://www.cloudflare.com/careers/jobs/",
+                "domain": "cloudflare.com"
+            },
+            {
+                "name": "ServiceNow",
+                "portal_link": "https://careers.servicenow.com/jobs/?search=&origin=global",
+                "domain": "servicenow.com"
+            },
+            {
+                "name": "Splunk",
+                "portal_link": "https://www.splunk.com/en_us/careers/search-jobs.html",
+                "domain": "splunk.com"
+            },
+            {
+                "name": "CrowdStrike",
+                "portal_link": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers",
+                "domain": "crowdstrike.com"
+            },
+            {
+                "name": "Canonical",
+                "portal_link": "https://canonical.com/careers/all",
+                "domain": "canonical.com"
+            },
+            {
+                "name": "Palo Alto Networks",
+                "portal_link": "https://jobs.paloaltonetworks.com/en/search-jobs",
+                "domain": "paloaltonetworks.com"
+            },
+            {
+                "name": "Autodesk",
+                "portal_link": "https://autodesk.wd1.myworkdayjobs.com/Ext",
+                "domain": "autodesk.com"
+            },
+            {
+                "name": "Squarespace",
+                "portal_link": "https://www.squarespace.com/careers/jobs",
+                "domain": "squarespace.com"
+            }
+        ]
+    },
+    {
+        "category": "FINTECH",
+        "data": [
+            {
+                "name": "Stripe",
+                "portal_link": "https://stripe.com/jobs/search",
+                "domain": "stripe.com"
+            },
+            {
+                "name": "Coinbase",
+                "portal_link": "https://www.coinbase.com/careers/positions",
+                "domain": "coinbase.com"
+            },
+            {
+                "name": "PayPal",
+                "portal_link": "https://paypal.wd1.myworkdayjobs.com/jobs",
+                "domain": "paypal.com"
+            },
+            {
+                "name": "Revolut",
+                "portal_link": "https://www.revolut.com/en-US/careers/",
+                "domain": "revolut.com"
+            }
+        ]
+    },
+    {
+        "category": "GAMING",
+        "data": [
+            {
+                "name": "Epic Games",
+                "portal_link": "https://www.epicgames.com/site/en-US/careers/jobs",
+                "domain": "epicgames.com"
+            },
+            {
+                "name": "Unity",
+                "portal_link": "https://unity.com/careers/positions",
+                "domain": "unity.com"
+            },
+            {
+                "name": "Activision Blizzard",
+                "portal_link": "https://careers.activisionblizzard.com/",
+                "domain": "activisionblizzard.com"
+            },
+            {
+                "name": "Ubisoft",
+                "portal_link": "https://www.ubisoft.com/en-us/company/careers/search?query=",
+                "domain": "ubisoft.com"
+            },
+            {
+                "name": "Valve",
+                "portal_link": "https://www.valvesoftware.com/en/jobs",
+                "domain": "valvesoftware.com"
+            },
+            {
+                "name": "King",
+                "portal_link": "https://careers.king.com/us/en/search-results",
+                "domain": "king.com"
+            },
+            {
+                "name": "Zynga",
+                "portal_link": "https://job-boards.greenhouse.io/zyngacareers",
+                "domain": "zynga.com"
+            },
+            {
+                "name": "Supercell",
+                "portal_link": "https://supercell.com/en/careers/#join",
+                "domain": "supercell.com"
+            },
+            {
+                "name": "Mojang",
+                "portal_link": "https://www.minecraft.net/en-us/mojang-careers",
+                "domain": "mojang.com"
+            },
+            {
+                "name": "Rockstar Games",
+                "portal_link": "https://www.rockstargames.com/careers/openings",
+                "domain": "rockstargames.com"
+            },
+            {
+                "name": "Square Enix",
+                "portal_link": "https://www.square-enix-games.com/en_US/careers",
+                "domain": "square-enix.com"
+            },
+            {
+                "name": "Warner Bros Games",
+                "portal_link": "https://careers.wbd.com/global/en/search-results",
+                "domain": "wbgames.com"
+            }
+        ]
+    },
+    {
+        "category": "TRANSPORTATION",
+        "data": [
+            {
+                "name": "Uber",
+                "portal_link": "https://www.uber.com/us/en/careers/list/",
+                "domain": "uber.com"
+            },
+            {
+                "name": "Lyft",
+                "portal_link": "https://www.lyft.com/careers#openings",
+                "domain": "lyft.com"
+            }
+        ]
+    },
+    {
+        "category": "TRAVEL",
+        "data": [
+            {
+                "name": "Airbnb",
+                "portal_link": "https://careers.airbnb.com/positions/",
+                "domain": "airbnb.com"
+            },
+            {
+                "name": "Expedia",
+                "portal_link": "https://lifeatexpediagroup.com/jobs/",
+                "domain": "expedia.com"
+            },
+            {
+                "name": "Booking.com",
+                "portal_link": "https://jobs.booking.com/",
+                "domain": "booking.com"
+            }
+        ]
+    },
+    {
+        "category": "SOCIAL MEDIA",
+        "data": [
+            {
+                "name": "Snapchat",
+                "portal_link": "https://careers.snap.com/jobs",
+                "domain": "snap.com"
+            },
+            {
+                "name": "Discord",
+                "portal_link": "https://discord.com/careers#all-jobs",
+                "domain": "discord.com"
+            }
+        ]
+    },
+    {
+        "category": "FINANCE",
+        "data": [
+            {
+                "name": "BlackRock",
+                "portal_link": "https://careers.blackrock.com/search-jobs",
+                "domain": "blackrock.com"
+            },
+            {
+                "name": "Morgan Stanley",
+                "portal_link": "https://morganstanley.tal.net/vx/lang-en-GB/mobile-0/brand-2/xf-232eb66ac89a/candidate/jobboard/vacancy/1",
+                "domain": "morganstanley.com"
+            },
+            {
+                "name": "Barclays",
+                "portal_link": "https://search.jobs.barclays/search-jobs",
+                "domain": "barclays.com"
+            },
+            {
+                "name": "Deutsche Bank",
+                "portal_link": "https://careers.db.com/",
+                "domain": "db.com"
+            },
+            {
+                "name": "HSBC",
+                "portal_link": "https://mycareer.hsbc.com/en_GB/external/SearchJobs",
+                "domain": "hsbc.com"
+            },
+            {
+                "name": "American Express",
+                "portal_link": "https://aexp.eightfold.ai/careers",
+                "domain": "americanexpress.com"
+            }
+        ]
+    },
+    {
+        "category": "HEALTHCARE",
+        "data": [
+            {
+                "name": "Pfizer",
+                "portal_link": "https://www.pfizer.com/about/careers/search-results",
+                "domain": "pfizer.com"
+            },
+            {
+                "name": "UnitedHealth Group",
+                "portal_link": "https://careers.unitedhealthgroup.com/job-search",
+                "domain": "unitedhealthgroup.com"
+            },
+            {
+                "name": "ResMed",
+                "portal_link": "https://careers.resmed.com/jobs",
+                "domain": "resmed.com"
+            }
+        ]
+    },
+    {
+        "category": "ENTERTAINMENT",
+        "data": [
+            {
+                "name": "Netflix",
+                "portal_link": "https://jobs.netflix.com/search",
+                "domain": "netflix.com"
+            },
+            {
+                "name": "Sony Interactive Entertainment",
+                "portal_link": "https://sonyinteractive.com/en/careers/",
+                "domain": "sonyinteractive.com"
+            }
+        ]
+    },
+    {
+        "category": "FOOD DELIVERY",
+        "data": [
+            {
+                "name": "DoorDash",
+                "portal_link": "https://careersatdoordash.com/job-search/",
+                "domain": "doordash.com"
+            }
+        ]
+    },
+    {
+        "category": "JOB PORTALS",
+        "data": [
+            {
+                "name": "LinkedIn Jobs",
+                "portal_link": "https://www.linkedin.com/jobs/",
+                "domain": "linkedin.com"
+            },
+            {
+                "name": "Glassdoor",
+                "portal_link": "https://www.glassdoor.com/Job/index.htm",
+                "domain": "glassdoor.com"
+            },
+            {
+                "name": "Indeed",
+                "portal_link": "https://www.indeed.com/",
+                "domain": "indeed.com"
+            },
+            {
+                "name": "Monster",
+                "portal_link": "https://www.monster.com/",
+                "domain": "monster.com"
+            },
+            {
+                "name": "Dice (Tech Focus)",
+                "portal_link": "https://www.dice.com/",
+                "domain": "dice.com"
+            },
+            {
+                "name": "Wellfound (Startups)",
+                "portal_link": "https://wellfound.com/jobs",
+                "domain": "wellfound.com"
+            },
+            {
+                "name": "Built In (Tech Focus)",
+                "portal_link": "https://builtin.com/jobs",
+                "domain": "builtin.com"
+            },
+            {
+                "name": "ZipRecruiter",
+                "portal_link": "https://www.ziprecruiter.com/",
+                "domain": "ziprecruiter.com"
+            },
+            {
+                "name": "We Work Remotely",
+                "portal_link": "https://weworkremotely.com/",
+                "domain": "weworkremotely.com"
+            },
+            {
+                "name": "Remote OK",
+                "portal_link": "https://remoteok.com/",
+                "domain": "remoteok.com"
+            }
+        ]
+    }
+]
