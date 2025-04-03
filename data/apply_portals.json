@@ -33,6 +33,11 @@
                 "domain": "nvidia.com"
             },
             {
+                "name": "IBM",
+                "portal_link": "https://www.ibm.com/careers/search",
+                "domain": "ibm.com"
+            },
+            {
                 "name": "Intel",
                 "portal_link": "https://intel.wd1.myworkdayjobs.com/External",
                 "domain": "intel.com"
