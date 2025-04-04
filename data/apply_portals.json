@@ -1,5 +1,40 @@
 [
     {
+        "category": "JOB PORTALS",
+        "data": [
+            {
+                "name": "LinkedIn Jobs",
+                "portal_link": "https://www.linkedin.com/jobs/",
+                "domain": "linkedin.com"
+            },
+            {
+                "name": "Glassdoor",
+                "portal_link": "https://www.glassdoor.com/Job/index.htm",
+                "domain": "glassdoor.com"
+            },
+            {
+                "name": "Indeed",
+                "portal_link": "https://www.indeed.com/",
+                "domain": "indeed.com"
+            },
+            {
+                "name": "Simplify",
+                "portal_link": "https://simplify.jobs/jobs?mostRecent=true&h1b=true&excludeApplied=true&jobId=ff194b68-4767-4ff0-81f4-a9b587a110e6",
+                "domain": "simplify.jobs"
+            },
+            {
+                "name": "Monster",
+                "portal_link": "https://www.monster.com/",
+                "domain": "monster.com"
+            },
+            {
+                "name": "Wellfound (Startups)",
+                "portal_link": "https://wellfound.com/jobs",
+                "domain": "wellfound.com"
+            }
+        ]
+    },
+    {
         "category": "TECH",
         "data": [
             {
@@ -411,41 +446,6 @@
                 "name": "DoorDash",
                 "portal_link": "https://careersatdoordash.com/job-search/",
                 "domain": "doordash.com"
-            }
-        ]
-    },
-    {
-        "category": "JOB PORTALS",
-        "data": [
-            {
-                "name": "LinkedIn Jobs",
-                "portal_link": "https://www.linkedin.com/jobs/",
-                "domain": "linkedin.com"
-            },
-            {
-                "name": "Glassdoor",
-                "portal_link": "https://www.glassdoor.com/Job/index.htm",
-                "domain": "glassdoor.com"
-            },
-            {
-                "name": "Indeed",
-                "portal_link": "https://www.indeed.com/",
-                "domain": "indeed.com"
-            },
-            {
-                "name": "Simplify",
-                "portal_link": "https://simplify.jobs/jobs?mostRecent=true&h1b=true&excludeApplied=true&jobId=ff194b68-4767-4ff0-81f4-a9b587a110e6",
-                "domain": "simplify.jobs"
-            },
-            {
-                "name": "Monster",
-                "portal_link": "https://www.monster.com/",
-                "domain": "monster.com"
-            },
-            {
-                "name": "Wellfound (Startups)",
-                "portal_link": "https://wellfound.com/jobs",
-                "domain": "wellfound.com"
             }
         ]
     }
