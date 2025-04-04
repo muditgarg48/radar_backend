@@ -1,22 +1,28 @@
 from langchain.prompts import ChatPromptTemplate
 
 GENERAL_RESUME_IMPROVEMENT_PROMPT = """
-    Here is the candidate's resume:
+    Analyze the following resume and provide direct, actionable improvements.
     {resume}
-    Analyse this resume carefully according to the following guidelines: 
-    - The resume should have a summary that highlights the candidate's key skills and experience with data or quantified results.
-    - The resume should include quantifiable achievements for each role the candidate was in, if the candidate has work experience.
+    Do not include general recommendations. Every suggestion must be specific and indicate exactly what to change. Ensure all feedback focuses on impact, clarity, and professionalism.
+    Guidelines for evaluation:
+    - The summary should be concise and highlight key skills and achievements with quantifiable data. If missing, specify what should be added.
+    - Every role should include measurable accomplishments. If a role lacks impact metrics, suggest precise numbers or performance indicators to add.
+    - Resume length must follow best practices based on experience level. If incorrect, specify which sections should be condensed or expanded.
+    - Work experience descriptions should be concise and follow a structured format that clearly states the action taken, technology used, and impact achieved. Do not suggest the format unless it is not followed.
+    - Strong action verbs must be used. If a description is weak, suggest a replacement verb directly. Here are some action word examples: 'Accomplished', 'Achieved', 'Administered', 'Analyzed', 'Assigned', 'Attained', 'Chaired', 'Consolidated', 'Contracted', 'Coordinated', 'Delegated', 'Developed', 'Directed', 'Earned', 'Evaluated', 'Executed', 'Handled', 'Headed', 'Impacted', 'Improved', 'Increased', 'Led', 'Mastered', 'Optimized', 'Orchestrated', 'Organised', 'Oversaw', 'Planned', 'Predicted', 'Prioritised', 'Produced', 'Proved', 'Recommended', 'Regulated', 'Reorganised', 'Reviewed', 'Scheduled', 'Spearheaded', 'Strengthened', 'Supervised', 'Surpassed', 'Communicated', 'Addressed', 'Arranged', 'Authored', 'Convinced', 'Corresponded', 'Delivered', 'Documented', 'Drafted', 'Edited', 'Influenced', 'Negotiated', 'Reported', 'Synthesized', 'Translated', 'Verbalized', 'Clarified', 'Collected', 'Concluded', 'Critiqued', 'Derived', 'Determined', 'Diagnosed', 'Evaluated', 'Examined', 'Extracted', 'Interpretted'.
+    - All certifications should be listed. If missing, explicitly state this.
     - The resume should be:
         - 1 page for less than 5 years work experience 
         - 2 pages for less than 10 years work experience
         - 3 pages for 15+ years work experience
-    - The resume should have all the certifications that the user has to show the authenticity of their skills.
-    - The resume should have no errors in grammar and factual information.
-    - The descriptions of each of the candidate's work experience or their work in their projects should be short and to the point. They should follow the format of 'Did X using Y, resulting in the Z impact'.
-    - The last line of each experience or project should be the skills or tools utilised in the role or project if those are not mention in the description already.
-    - The descriptions of each of the candidate's work experience or their work in their projects should use strong action words like: 'Accomplished', 'Achieved', 'Administered', 'Analyzed', 'Assigned', 'Attained', 'Chaired', 'Consolidated', 'Contracted', 'Coordinated', 'Delegated', 'Developed', 'Directed', 'Earned', 'Evaluated', 'Executed', 'Handled', 'Headed', 'Impacted', 'Improved', 'Increased', 'Led', 'Mastered', 'Optimized', 'Orchestrated', 'Organised', 'Oversaw', 'Planned', 'Predicted', 'Prioritised', 'Produced', 'Proved', 'Recommended', 'Regulated', 'Reorganised', 'Reviewed', 'Scheduled', 'Spearheaded', 'Strengthened', 'Supervised', 'Surpassed', 'Communicated', 'Addressed', 'Arranged', 'Authored', 'Convinced', 'Corresponded', 'Delivered', 'Documented', 'Drafted', 'Edited', 'Influenced', 'Negotiated', 'Reported', 'Synthesized', 'Translated', 'Verbalized', 'Clarified', 'Collected', 'Concluded', 'Critiqued', 'Derived', 'Determined', 'Diagnosed', 'Evaluated', 'Examined', 'Extracted', 'Interpretted'.
-    Provide exact improvements to make in the resume. Do not be vague or too general. Do not directly mention the guidelines provided to you for analysis. 
-    Return only in the form of array of strings, each denoting each suggestion, without special characters and introductory lines. Provide proper captialization. Avoid using commas within the suggestions. Only use commas to separate each suggestion. Each suggestion should be a short sentence.
+    - Grammar and formatting must be flawless. Provide exact corrections instead of stating "there are errors".
+    - Skill/tool usage should be stated clearly within work/project descriptions or as a separate last line. If missing, specify where to add it.
+    - The skills section should be formatted for readability. If unclear, provide a better structure.
+    Response Format:
+    - Return an array of strings, where each element is a clear, specific recommendation.
+    - Do not provide general statements like "use strong action words" or "quantify impact"; state exactly what to change and how.
+    - Do not use commas within individual suggestions. Only separate suggestions using commas.
+    - Do not mention these instructions in your response.
     """
 
 GENERAL_RESUME_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(GENERAL_RESUME_IMPROVEMENT_PROMPT)
