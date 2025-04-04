@@ -356,6 +356,16 @@
                 "name": "Dun and Bradstreet",
                 "portal_link": "https://www.dnb.com/ie/about-us/careers-and-people/careers.html",
                 "domain": "dnb.com"
+            }, 
+            {
+                "name": "Goldman Sachs",
+                "portal_link": "https://higher.gs.com/results?&page=1&sort=POSTED_DATE",
+                "domain": "goldmansachs.com"
+            }, 
+            {
+                "name": "State Street",
+                "portal_link": "https://statestreet.wd1.myworkdayjobs.com/Global",
+                "domain": "statestreet.com"
             }
         ]
     },
@@ -423,39 +433,19 @@
                 "domain": "indeed.com"
             },
             {
+                "name": "Simplify",
+                "portal_link": "https://simplify.jobs/jobs?mostRecent=true&h1b=true&excludeApplied=true&jobId=ff194b68-4767-4ff0-81f4-a9b587a110e6",
+                "domain": "simplify.jobs"
+            },
+            {
                 "name": "Monster",
                 "portal_link": "https://www.monster.com/",
                 "domain": "monster.com"
             },
             {
-                "name": "Dice (Tech Focus)",
-                "portal_link": "https://www.dice.com/",
-                "domain": "dice.com"
-            },
-            {
                 "name": "Wellfound (Startups)",
                 "portal_link": "https://wellfound.com/jobs",
                 "domain": "wellfound.com"
-            },
-            {
-                "name": "Built In (Tech Focus)",
-                "portal_link": "https://builtin.com/jobs",
-                "domain": "builtin.com"
-            },
-            {
-                "name": "ZipRecruiter",
-                "portal_link": "https://www.ziprecruiter.com/",
-                "domain": "ziprecruiter.com"
-            },
-            {
-                "name": "We Work Remotely",
-                "portal_link": "https://weworkremotely.com/",
-                "domain": "weworkremotely.com"
-            },
-            {
-                "name": "Remote OK",
-                "portal_link": "https://remoteok.com/",
-                "domain": "remoteok.com"
             }
         ]
     }
