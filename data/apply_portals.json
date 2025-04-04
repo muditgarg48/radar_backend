@@ -98,11 +98,6 @@
                 "domain": "reddit.com"
             },
             {
-                "name": "LinkedIn",
-                "portal_link": "https://www.linkedin.com/company/linkedin/jobs/",
-                "domain": "linkedin.com"
-            },
-            {
                 "name": "Zoom",
                 "portal_link": "https://zoom.wd5.myworkdayjobs.com/Zoom",
                 "domain": "zoom.us"
@@ -166,6 +161,16 @@
                 "name": "Squarespace",
                 "portal_link": "https://www.squarespace.com/careers/jobs",
                 "domain": "squarespace.com"
+            },
+            {
+                "name": "Etsy",
+                "portal_link": "https://careers.etsy.com/jobs/search?query=",
+                "domain": "etsy.com"
+            }, 
+            {
+                "name": "eBay",
+                "portal_link": "https://ebay.wd5.myworkdayjobs.com/en-US/apply",
+                "domain": "ebay.com"
             }
         ]
     },
@@ -306,6 +311,11 @@
                 "name": "Discord",
                 "portal_link": "https://discord.com/careers#all-jobs",
                 "domain": "discord.com"
+            },
+            {
+                "name": "LinkedIn",
+                "portal_link": "https://www.linkedin.com/company/linkedin/jobs/",
+                "domain": "linkedin.com"
             }
         ]
     },
