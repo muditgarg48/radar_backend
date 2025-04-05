@@ -131,9 +131,6 @@ def get_resume_text(resume):
         text += f"\n ======= Page {page_num+1} ====== \n" + page.extract_text()
     return text
 
-# @app.route('/')
-# def start_to_run():
-#     return "The server has started!", 200
 
 @app.route('/get-apply-data')
 def get_apply_data():
@@ -146,6 +143,10 @@ def get_apply_data():
 @app.route('/get-logo-client-id')
 def get_logo_client_id():
     return get_client_id()
+
+@app.route('/hello-server')
+def start_to_run():
+    return "The server has started!", 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ['PORT'])
