@@ -43,6 +43,11 @@
                 "domain": "google.com"
             },
             {
+                "name": "Apple",
+                "portal_link": "https://jobs.apple.com/en-us/search",
+                "domain": "apple.com"
+            },
+            {
                 "name": "Microsoft",
                 "portal_link": "https://careers.microsoft.com/us/en/search-results",
                 "domain": "microsoft.com"
