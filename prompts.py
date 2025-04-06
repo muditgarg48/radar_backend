@@ -89,7 +89,8 @@ COVER_LETTER_GENERATION_PROMPT = """
     {job_description}. 
     Here is the resume: 
     {resume}. 
-    Craft a compelling cover letter for {position} at {company} which the above mentioned job description and resume fit. Focus on highlighting the skills and experience that connects the candidate's specific achievements to the role and company needs for the role. Focus on showing genuine interest in their company and demonstrating cultural fit. 
+    Craft a compelling cover letter for {position} at {company} which the above mentioned job description and resume fit. Focus on highlighting the skills and experience that connects the candidate's specific achievements to the role and company needs for the role. Focus on showing genuine interest in their company and demonstrating cultural fit.
+    Some context to keep in mind when writing the cover letter: {context} 
     Return in the form of a stringified json with the following keys: "greeting", "opening_paragraph", "body_paragraph", "closing_paragraph", "sign_off", "signature" with their respective values as strings. Humanise the cover letter as much as possible without reducing the professionalism.
     """
 

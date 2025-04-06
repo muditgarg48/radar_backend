@@ -100,6 +100,11 @@ def generate_cover_letter():
     elif "company" not in request.form:
         return jsonify({"error": "No job description provided to get company name"}), 400
     
+    if "context" not in request.form:
+        context = ""
+    else:
+        context = request.form.get("context")
+    
     resume = request.files['resume']
     resume_text = get_resume_text(resume)
     # jd = data["jd"]
@@ -109,7 +114,7 @@ def generate_cover_letter():
     # company = data["company"]
     company = request.form.get("company")
 
-    prompt = COVER_LETTER_GENERATION_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text)
+    prompt = COVER_LETTER_GENERATION_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text, context=context)
     # print(prompt)
     cover_letter_json = chatbot.generate_content(contents=prompt).text
     cover_letter_json = cover_letter_json.replace("```", "")
