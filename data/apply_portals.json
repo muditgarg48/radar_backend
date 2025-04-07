@@ -316,6 +316,11 @@
                 "name": "Lyft",
                 "portal_link": "https://www.lyft.com/careers#openings",
                 "domain": "lyft.com"
+            }, 
+            {
+                "name": "Tesla",
+                "portal_link": "https://www.tesla.com/en_IE/careers/search/",
+                "domain": "tesla.com"
             }
         ]
     },
