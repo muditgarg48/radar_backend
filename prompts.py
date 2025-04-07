@@ -107,3 +107,29 @@ COVER_LETTER_IMPROVEMENT_PROMPT = """
     """
 
 COVER_LETTER_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(COVER_LETTER_IMPROVEMENT_PROMPT)
+
+ADDITIONAL_MSG_GENERATION_PROMPT = """
+    Here is the job description: 
+    {job_description}. 
+    Here is the resume: 
+    {resume}. 
+    Craft a compelling additional message for the hiring manager that will be attached with the candidates's application form in the job portal for the role of {position} at {company}, which the above mentioned job description and resume fit. Focus on highlighting the candidate's genuine enthusiam for the role and the company and how they perfectly fit into their work culture. Write a few words on the candidate's best achievements in the skills required in the job description and why this role is his top choice among other roles.
+    Some context from the candidate to keep in mind when writing this message: {context} 
+    The message should not be more than 400 characters and should not be less than 20 characters. Humanise message as much as possible without reducing the professionalism. Add a bit of creativity, as if this is a message the candidate is personally sending to a reputed hiring manager.
+    Only return the message and no other text.
+    """
+
+ADDITIONAL_MSG_GENERATION_TEMPLATE = ChatPromptTemplate.from_template(ADDITIONAL_MSG_GENERATION_PROMPT)
+
+ADDITIONAL_MSG_IMPROVEMENT_PROMPT = """
+    You are an experienced hiring manager, looking candidates for the role of {position} at {company}.
+    You had posted this job description for the role: 
+    {job_description}. 
+    Here is the resume of a potential candidate: 
+    {resume}.
+    Here is the additional message that the candidate attached along with their application:
+    {additional_msg}
+    Judge this additional message acting as the hiring manager based on the job description and resume and provide exact improvements only without being vague or too general to increase the candidate's chances as a potential hire. Judge it on how you, the hiring manager for this role, thought about this candidate when reading it. Answer should be in the form of comma separated strings only avoiding commas within the strings. 
+    """
+
+ADDITIONAL_MSG_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(ADDITIONAL_MSG_IMPROVEMENT_PROMPT)

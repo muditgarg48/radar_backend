@@ -98,7 +98,7 @@ def generate_cover_letter():
     elif "position" not in request.form:
         return jsonify({"error": "Job description not processed to get job title"}), 400
     elif "company" not in request.form:
-        return jsonify({"error": "No job description provided to get company name"}), 400
+        return jsonify({"error": "Job description not processed to get company name"}), 400
     
     if "context" not in request.form:
         context = ""
@@ -127,6 +127,43 @@ def generate_cover_letter():
     improvements = chatbot.generate_content(contents=prompt).text
     improvements = improvements.split(",")
     return jsonify({"cover_letter": cover_letter, "improvements": improvements})
+
+@app.route("/generate-additional-msg", methods=["POST"])
+def generate_additional_msg():
+
+    # data = request.get_json()
+
+    if "resume" not in request.files:
+        return jsonify({"error": "No resume provided"}), 400
+    elif "jd" not in request.form:
+        return jsonify({"error": "No job description provided"}), 400
+    elif "position" not in request.form:
+        return jsonify({"error": "Job description not processed to get job title"}), 400
+    elif "company" not in request.form:
+        return jsonify({"error": "Job description not processed to get company name"}), 400
+    
+    if "context" not in request.form:
+        context = ""
+    else:
+        context = request.form.get("context")
+    
+    resume = request.files['resume']
+    resume_text = get_resume_text(resume)
+    # jd = data["jd"]
+    jd = request.form.get("jd")
+    # position = data["position"]
+    position = request.form.get("position")
+    # company = data["company"]
+    company = request.form.get("company")
+
+    prompt = ADDITIONAL_MSG_GENERATION_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text, context=context)
+    # print(prompt)
+    additional_msg = chatbot.generate_content(contents=prompt).text
+
+    prompt = ADDITIONAL_MSG_IMPROVEMENT_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text, additional_msg=additional_msg)
+    improvements = chatbot.generate_content(contents=prompt).text
+    improvements = improvements.split(",")
+    return jsonify({"additional_msg": additional_msg, "improvements": improvements})
 
 def get_resume_text(resume):
     pdf_reader = PdfReader(BytesIO(resume.read()))
