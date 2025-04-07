@@ -173,6 +173,12 @@ def get_resume_text(resume):
         text += f"\n ======= Page {page_num+1} ====== \n" + page.extract_text()
     return text
 
+@app.route('/get-resume-text', methods=["POST"])
+def resume_parser():
+    if "resume" not in request.files:
+        return jsonify({"error": "No resume provided"}), 400
+    resume = request.files['resume']
+    return get_resume_text(resume)
 
 @app.route('/get-apply-data')
 def get_apply_data():

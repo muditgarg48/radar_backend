@@ -54,7 +54,8 @@ KEYWORD_EXTRACTION_PROMPT = """
     The job is {position} at {company}. 
     Here is the job description: 
     {job_description}. 
-    Extract the keywords that should be in the applicants' resume to match the job description. The keywords should include each and every hard and soft skills that should be highlighted in the application form so that the applicant matches the job description perfectly. Return only in the form of comma separated strings and no special characters and proper captialization. 
+    Extract the keywords that should be in the applicants' resume extracted from the job description. The keywords should include each and every hard and soft skills that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly. Do not give the most obvious keywords like the job title. 
+    Return only in the form of comma separated strings and no special characters and proper captialization. 
     """
 
 KEYWORD_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(KEYWORD_EXTRACTION_PROMPT)
@@ -79,7 +80,7 @@ TO_BE_NOTED_EXTRACTION_PROMPT = """
     - any benefits and perks provided with the role
     - the contract type for the role: permanent or temprorary or contract-based
     - any details about hiring process mentioned in the job description.
-    Return only in the form of comma separated strings and no special characters and proper captialization. 
+    Return only in the form of comma separated strings. Do not use comma anywhere else. No special characters except currency symbols. Proper captialization. 
     """
 
 TO_BE_NOTED_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(TO_BE_NOTED_EXTRACTION_PROMPT)
@@ -89,7 +90,8 @@ COVER_LETTER_GENERATION_PROMPT = """
     {job_description}. 
     Here is the resume: 
     {resume}. 
-    Craft a compelling cover letter for {position} at {company} which the above mentioned job description and resume fit. Focus on highlighting the skills and experience that connects the candidate's specific achievements to the role and company needs for the role. Focus on showing genuine interest in their company and demonstrating cultural fit.
+    Craft a compelling cover letter for {position} at {company} which the above mentioned job description and resume fit.
+    First focus on showing genuine interest in {company} and being a {position}. Then focus on highlighting the skills and experience that connects the candidate's specific achievements to the role and company needs for the role, showcasing how the candidate perfectly fits. Then finally discuss why this role is his top choice among other roles and how this role and this company is his best fit. Throughout the cover letter, convey how the candidate is really excited to be a part of {company}.
     Some context to keep in mind when writing the cover letter: {context} 
     Return in the form of a stringified json with the following keys: "greeting", "opening_paragraph", "body_paragraph", "closing_paragraph", "sign_off", "signature" with their respective values as strings. Humanise the cover letter as much as possible without reducing the professionalism.
     """
