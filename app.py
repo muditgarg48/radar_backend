@@ -54,6 +54,26 @@ def process_job_description():
         "notes": notes
     })
 
+@app.route('/get-company-values', methods=["POST"])
+def get_company_values():
+
+    data = request.get_json()
+
+    if "company" not in data:
+        return jsonify({"error": "Company not provided"}), 400
+    if "job_title" not in data:
+        return jsonify({"error": "Job title not provided"}), 400
+
+    company = data["company"].strip()
+    job_title = data["job_title"].strip()
+
+    prompt = COMPANY_VALUES_GENERATION_TEMPLATE.format(company=company, job_title=job_title)
+    values_data = chatbot.generate_content(contents=prompt).text
+    values_data = values_data.replace("```", "")[5:]
+    values_data = json.loads(values_data)
+
+    return jsonify(values_data)
+
 @app.route("/summarize-resume", methods=["POST"])
 def summarize_resume():
 
