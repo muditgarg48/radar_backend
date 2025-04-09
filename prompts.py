@@ -50,6 +50,20 @@ COMPANY_EXTRACTION_PROMPT = """
 
 COMPANY_NAME_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_EXTRACTION_PROMPT)
 
+COMPANY_VALUES_GENERATION_PROMPT = """
+    Tell me about {company}'s values in terms of preparation for interviews for the role of {job_title}.
+    Only return in the form of a stringified json of the following format:
+    "link": <home_page_link>,
+    "domain": <{company}_domain_name>,
+    "values": [<values>]
+    where each value in array of values in the "values" key is a dictionary in the following format:
+    "value_name": <value>,
+    "value_explanation": <explanation>,
+    "value_usage_recommendations_in_interview": [<recommendations in short sentences>]
+    """
+
+COMPANY_VALUES_GENERATION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_VALUES_GENERATION_PROMPT)
+
 KEYWORD_EXTRACTION_PROMPT = """
     The job is {position} at {company}. 
     Here is the job description: 
