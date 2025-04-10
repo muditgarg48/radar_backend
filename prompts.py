@@ -25,12 +25,16 @@ GENERAL_RESUME_IMPROVEMENT_PROMPT = """
 GENERAL_RESUME_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(GENERAL_RESUME_IMPROVEMENT_PROMPT)
 
 RESUME_IMPROVEMENT_ACC_TO_JD_PROMPT = """
-    The candidate is applying for {job_title} at {company}. 
+    The candidate is applying for {position} at {company}. 
     Here is their resume:
     {resume}
     Here is the job description:
     {job_description}
-    Give suggestions to improve the resume by identifying key skills and experience that align with this role, and suggest specific modifications to highligt these matches. Focus on using relevant keywords and quantifiable achievements. Return only in the form of an array of strings.
+    Give suggestions to tailor the resume by identifying key skills and experience to closely align with the job description. Suggest specific modifications to highlight these matches. Focus on using relevant keywords, skills, keyword phrases and quantifiable achievements. Return a json schema with the following key-value pairs:
+    "revised_summary": <revised_summary>,
+    "phrases_for_strong_alignment": [<phrases_for_strong_alignment>],
+    "most_relevant_keywords" : [<most_relevant_keywords>],
+    "further_improvements": [<five_further_improvements>]
     """
 
 RESUME_IMPROVEMENT_ACC_TO_JD_TEMPLATE = ChatPromptTemplate.from_template(RESUME_IMPROVEMENT_ACC_TO_JD_PROMPT)
@@ -50,8 +54,19 @@ COMPANY_EXTRACTION_PROMPT = """
 
 COMPANY_NAME_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_EXTRACTION_PROMPT)
 
+ALIGNMENT_SCORE_PROMPT = """
+    You are an experienced hiring manager, looking candidates for the role of {position} at {company}.
+    You had posted this job description for the role: 
+    {job_description}. 
+    Here is the resume of a potential candidate: 
+    {resume}.
+    Calculate the alignment score between the job description and the resume and return only the alignment score measured in percentage. Return in the form of a one two decimal places whole number between 0 and 100 and give no reasoning.
+    """
+
+ALIGNMENT_SCORE_TEMPLATE = ChatPromptTemplate.from_template(ALIGNMENT_SCORE_PROMPT)
+
 COMPANY_VALUES_GENERATION_PROMPT = """
-    Tell me about {company}'s values in terms of preparation for interviews for the role of {job_title}.
+    Tell me about {company}'s values in terms of preparation for interviews for the role of {position}.
     Only return in the form of a stringified json of the following format:
     "link": <home_page_link>,
     "domain": <{company}_domain_name>,
@@ -68,7 +83,7 @@ KEYWORD_EXTRACTION_PROMPT = """
     The job is {position} at {company}. 
     Here is the job description: 
     {job_description}. 
-    Extract the keywords that should be in the applicants' resume extracted from the job description. The keywords should include each and every hard and soft skills that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly. Do not give the most obvious keywords like the job title. 
+    Extract the keywords and keyword phrases that should be in the applicants' resume from the job description. The keywords should include each and every hard and soft skills, keywords and keyword phrases that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly and help the candidate's resume tank highly on ATS. Do not give the most obvious keywords like the job title. 
     Return only in the form of comma separated strings and no special characters and proper captialization. 
     """
 

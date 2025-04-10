@@ -54,6 +54,27 @@ def process_job_description():
         "notes": notes
     })
 
+@app.route('/get-resume-alignment-score', methods=["POST"])
+def get_resume_alignment_score():
+    if "resume" not in request.files:
+        return jsonify({"error": "No resume provided"}), 400
+    elif "jd" not in request.form:
+        return jsonify({"error": "No job description provided"}), 400
+    elif "position" not in request.form:
+        return jsonify({"error": "Job description not processed to get job title"}), 400
+    elif "company" not in request.form:
+        return jsonify({"error": "Job description not processed to get company name"}), 400
+    
+    resume = request.files['resume']
+    resume_text = get_resume_text(resume)
+    jd = request.form.get("jd")
+    position = request.form.get("position")
+    company = request.form.get("company")
+    prompt = ALIGNMENT_SCORE_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text)
+    alignment_score = chatbot.generate_content(contents=prompt).text.strip()
+    print(alignment_score)
+    return jsonify({"alignment_score": alignment_score})
+
 @app.route('/get-company-values', methods=["POST"])
 def get_company_values():
 
@@ -65,9 +86,9 @@ def get_company_values():
         return jsonify({"error": "Job title not provided"}), 400
 
     company = data["company"].strip()
-    job_title = data["job_title"].strip()
+    position = data["job_title"].strip()
 
-    prompt = COMPANY_VALUES_GENERATION_TEMPLATE.format(company=company, job_title=job_title)
+    prompt = COMPANY_VALUES_GENERATION_TEMPLATE.format(company=company, position=position)
     values_data = chatbot.generate_content(contents=prompt).text
     values_data = values_data.replace("```", "")[5:]
     values_data = json.loads(values_data)
@@ -127,11 +148,8 @@ def generate_cover_letter():
     
     resume = request.files['resume']
     resume_text = get_resume_text(resume)
-    # jd = data["jd"]
     jd = request.form.get("jd")
-    # position = data["position"]
     position = request.form.get("position")
-    # company = data["company"]
     company = request.form.get("company")
 
     prompt = COVER_LETTER_GENERATION_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text, context=context)
