@@ -411,6 +411,11 @@
                 "name": "State Street",
                 "portal_link": "https://statestreet.wd1.myworkdayjobs.com/Global",
                 "domain": "statestreet.com"
+            },
+            {
+                "name": "JPMorgan Chase",
+                "portal_link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/jobs",
+                "domain": "jpmorgan.com"
             }
         ]
     },
@@ -439,7 +444,7 @@
         "data": [
             {
                 "name": "Netflix",
-                "portal_link": "https://jobs.netflix.com/search",
+                "portal_link": "https://explore.jobs.netflix.net/careers",
                 "domain": "netflix.com"
             },
             {
