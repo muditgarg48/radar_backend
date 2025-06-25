@@ -45,13 +45,38 @@ def process_job_description():
     keywords = keywords.split(",")
     prompt = TO_BE_NOTED_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     notes = chatbot.generate_content(contents=prompt).text
-    notes = notes.split(",")
-    
+    # notes = notes.split(",")
+
+    notes = notes.replace("```", "")[5:]
+    # print(notes)
+    notes = json.loads(notes)
+    salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
+    experience_level = notes["experience_level"] if "experience_level" in notes else None
+    visa_sponsorship = notes["visa_sponsorship"] if "visa_sponsorship" in notes else None
+    location = notes["location"] if "location" in notes else None
+    team_name = notes["team_name"] if "team_name" in notes else None
+    if "benefits" in notes:
+        benefits = notes["benefits"] 
+        benefits = benefits.split(";")
+    else:
+        benefits = None
+    if "other_noteworthy_details" in notes:
+        other_noteworthy_details = notes["other_noteworthy_details"] 
+        other_noteworthy_details = other_noteworthy_details.split(";")
+    else:
+        other_noteworthy_details = None
+
     return jsonify({
         "title": job_title,
         "company": company_name,
         "keywords": keywords,
-        "notes": notes
+        "salary_bracket": salary_bracket,
+        "experience_level": experience_level,
+        "visa_sponsorship": visa_sponsorship,
+        "team_name": team_name,
+        "location": location,
+        "benefits": benefits,
+        "notes": other_noteworthy_details,
     })
 
 @app.route('/get-resume-alignment-score', methods=["POST"])
@@ -72,8 +97,20 @@ def get_resume_alignment_score():
     company = request.form.get("company")
     prompt = ALIGNMENT_SCORE_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text)
     alignment_score = chatbot.generate_content(contents=prompt).text.strip()
-    print(alignment_score)
+    # print(alignment_score)
     return jsonify({"alignment_score": alignment_score})
+
+@app.route('/get-company-domain', methods=["POST"])
+def get_company_domain():
+    try:
+        data = request.get_json()
+        if "company" not in data:
+            return jsonify({"error": "Company not provided"}), 400
+        prompt = COMPANY_DOMAIN_EXTRACTION_TEMPLATE.format(company=data["company"])
+        domain = chatbot.generate_content(contents=prompt).text.strip()
+        return jsonify({"domain": domain})
+    except Exception as e:
+        print(f"Company domain extraction error: {e}")
 
 @app.route('/get-company-values', methods=["POST"])
 def get_company_values():
@@ -233,6 +270,10 @@ def get_logo_client_id():
 @app.route('/hello-server')
 def start_to_run():
     return "The server has started!", 200
+
+@app.route('/')
+def index():
+    return "🟢 RaDAR Online!", 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=os.environ['PORT'])

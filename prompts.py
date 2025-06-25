@@ -65,6 +65,12 @@ ALIGNMENT_SCORE_PROMPT = """
 
 ALIGNMENT_SCORE_TEMPLATE = ChatPromptTemplate.from_template(ALIGNMENT_SCORE_PROMPT)
 
+COMPANY_DOMAIN_EXTRACTION_PROMPT = """
+    Return the domain name of {company} in one line string.
+    """
+
+COMPANY_DOMAIN_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_DOMAIN_EXTRACTION_PROMPT)
+
 COMPANY_VALUES_GENERATION_PROMPT = """
     Tell me about {company}'s values in terms of preparation for interviews for the role of {position}.
     Only return in the form of a stringified json of the following format:
@@ -94,22 +100,24 @@ TO_BE_NOTED_EXTRACTION_PROMPT = """
     Here is the job description: 
     {job_description}. 
     Extract all the extra vital information that the candidate must note while applying for this role. Do not include any points that are not specified in the job description or cannot be deduced from the job description.
-    This includes extra information like:
-    - the name of the team in which this role is based.
-    - if the visa sponsorship will be provided or not
-    - if there will be any relocation assistance
-    - the required years of experience for the job
-    - salary or compensation details for the job
-    - the work-mode for the role: hybrid or onsite or remote
-    - if there are any travel requirements
-    - the office location for the role
-    - if there is any minimum degree requirement
-    - if there are any specific certifications required
-    - if there are any growth opportunities
-    - any benefits and perks provided with the role
-    - the contract type for the role: permanent or temprorary or contract-based
-    - any details about hiring process mentioned in the job description.
-    Return only in the form of comma separated strings. Do not use comma anywhere else. No special characters except currency symbols. Proper captialization. 
+    Return in the form of a stringified json with the following keys and exclude those keys whose information is not present in the job description:
+    - "salary_bracket": <string of salary range mentioned>,
+    - "experience_level": <string of experience level including any years of experience range mentioned>,
+    - "visa_sponsorship": <boolean of whether visa sponsorship will be provided or not>,
+    - "location" <string of location of the role>,
+    - "team_name": <string of exact name of the team in which this role is based>,
+    - "benefits": <string of semicolon separated mentioned specific most relevant benefits provided with the role>,
+    - "other_noteworthy_details": <string of semicolon separated other noteworthy details apart from the keys mentioned which can include: 
+        - if there will be any relocation assistance
+        - the work-mode for the role: hybrid or onsite or remote
+        - if there are any travel requirements
+        - if there is any minimum degree requirement
+        - if there are any specific certifications required
+        - if there are any growth opportunities
+        - any benefits and perks provided with the role
+        - the contract type for the role: permanent or temprorary or contract-based
+        - any details about hiring process mentioned in the job description.
+    No special characters except currency symbols. Proper captialization. 
     """
 
 TO_BE_NOTED_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(TO_BE_NOTED_EXTRACTION_PROMPT)
