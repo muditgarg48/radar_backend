@@ -37,18 +37,16 @@ def process_job_description():
     job_description_text = data["jd"]
 
     prompt = JOB_TITLE_EXTRACTION_TEMPLATE.format(job_description=job_description_text)
-    job_title = chatbot.generate_content(contents=prompt).text
+    job_title = chatbot.generate_content(contents=prompt).text.strip()
     prompt = COMPANY_NAME_EXTRACTION_TEMPLATE.format(job_description=job_description_text)
-    company_name = chatbot.generate_content(contents=prompt).text
+    company_name = chatbot.generate_content(contents=prompt).text.strip()
     prompt = KEYWORD_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     keywords = chatbot.generate_content(contents=prompt).text
-    keywords = keywords.split(",")
+    keywords = keywords.split(";")
     prompt = TO_BE_NOTED_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     notes = chatbot.generate_content(contents=prompt).text
-    # notes = notes.split(",")
 
     notes = notes.replace("```", "")[5:]
-    # print(notes)
     notes = json.loads(notes)
     salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
     experience_level = notes["experience_level"] if "experience_level" in notes else None
@@ -109,8 +107,9 @@ def get_company_domain():
         prompt = COMPANY_DOMAIN_EXTRACTION_TEMPLATE.format(company=data["company"])
         domain = chatbot.generate_content(contents=prompt).text.strip()
         return jsonify({"domain": domain})
-    except Exception as e:
-        print(f"Company domain extraction error: {e}")
+    except Exception as error:
+        print(f"Company domain extraction error: {error}")
+        return error, 500
 
 @app.route('/get-company-values', methods=["POST"])
 def get_company_values():

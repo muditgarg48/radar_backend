@@ -75,7 +75,6 @@ COMPANY_VALUES_GENERATION_PROMPT = """
     Tell me about {company}'s values in terms of preparation for interviews for the role of {position}.
     Only return in the form of a stringified json of the following format:
     "link": <home_page_link>,
-    "domain": <{company}_domain_name>,
     "values": [<values>]
     where each value in array of values in the "values" key is a dictionary in the following format:
     "value_name": <value>,
@@ -90,7 +89,7 @@ KEYWORD_EXTRACTION_PROMPT = """
     Here is the job description: 
     {job_description}. 
     Extract the keywords and keyword phrases that should be in the applicants' resume from the job description. The keywords should include each and every hard and soft skills, keywords and keyword phrases that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly and help the candidate's resume tank highly on ATS. Do not give the most obvious keywords like the job title. 
-    Return only in the form of comma separated strings and no special characters and proper captialization. 
+    Return only in the form of ; separated strings and no special characters and proper captialization. 
     """
 
 KEYWORD_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(KEYWORD_EXTRACTION_PROMPT)
