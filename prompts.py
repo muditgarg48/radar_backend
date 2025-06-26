@@ -141,7 +141,7 @@ COVER_LETTER_IMPROVEMENT_PROMPT = """
     {resume}.
     Here is the cover letter for {position} at {company}:
     {cover_letter}
-    Judge the cover letter based on the job description and resume and provide exact improvements only without being vague or too general. Judge it on the basis of the how the cover letter gives the candidate the best chance of getting the job, shows his cultural fit, and shows genuine interest in the company. Answer should be in the form of comma separated strings only avoiding commas within the strings. 
+    Judge the cover letter based on the job description and resume and provide exact improvements only without being vague or too general. Judge it on the basis of the how the cover letter gives the candidate the best chance of getting the job, shows his cultural fit, and shows genuine interest in the company. Answer should be in the form of ; separated strings only with proper captialization and no special characters.
     """
 
 COVER_LETTER_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(COVER_LETTER_IMPROVEMENT_PROMPT)

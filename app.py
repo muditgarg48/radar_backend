@@ -199,7 +199,7 @@ def generate_cover_letter():
 
     prompt = COVER_LETTER_IMPROVEMENT_TEMPLATE.format(position=position, company=company, job_description=jd, resume=resume_text, cover_letter=cover_letter)
     improvements = chatbot.generate_content(contents=prompt).text
-    improvements = improvements.split(",")
+    improvements = improvements.split(";")
     return jsonify({"cover_letter": cover_letter, "improvements": improvements})
 
 @app.route("/generate-additional-msg", methods=["POST"])
