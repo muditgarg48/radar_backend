@@ -66,7 +66,7 @@ ALIGNMENT_SCORE_PROMPT = """
 ALIGNMENT_SCORE_TEMPLATE = ChatPromptTemplate.from_template(ALIGNMENT_SCORE_PROMPT)
 
 COMPANY_DOMAIN_EXTRACTION_PROMPT = """
-    Return the domain name of {company} in one line string.
+    Return the domain name of {company} in one line string without quotations, only the domain.
     """
 
 COMPANY_DOMAIN_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_DOMAIN_EXTRACTION_PROMPT)
