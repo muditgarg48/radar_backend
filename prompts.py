@@ -11,14 +11,14 @@ GENERAL_RESUME_IMPROVEMENT_PROMPT = """
     - Work experience descriptions should be concise and follow a structured format that clearly states the action taken, technology used, and impact achieved. Do not suggest the format unless it is not followed.
     - Strong action verbs must be used. If a description is weak, suggest a replacement verb directly. Here are some action word examples: 'Accomplished', 'Achieved', 'Administered', 'Analyzed', 'Assigned', 'Attained', 'Chaired', 'Consolidated', 'Contracted', 'Coordinated', 'Delegated', 'Developed', 'Directed', 'Earned', 'Evaluated', 'Executed', 'Handled', 'Headed', 'Impacted', 'Improved', 'Increased', 'Led', 'Mastered', 'Optimized', 'Orchestrated', 'Organised', 'Oversaw', 'Planned', 'Predicted', 'Prioritised', 'Produced', 'Proved', 'Recommended', 'Regulated', 'Reorganised', 'Reviewed', 'Scheduled', 'Spearheaded', 'Strengthened', 'Supervised', 'Surpassed', 'Communicated', 'Addressed', 'Arranged', 'Authored', 'Convinced', 'Corresponded', 'Delivered', 'Documented', 'Drafted', 'Edited', 'Influenced', 'Negotiated', 'Reported', 'Synthesized', 'Translated', 'Verbalized', 'Clarified', 'Collected', 'Concluded', 'Critiqued', 'Derived', 'Determined', 'Diagnosed', 'Evaluated', 'Examined', 'Extracted', 'Interpretted'.
     - All certifications should be listed. If missing, explicitly state this.
-    - Grammar and formatting must be flawless. Provide exact corrections instead of stating "there are errors".
+    - Grammar must be flawless. Provide exact corrections instead of stating "there are errors".
+    - Ignore formatting issues.
     - Skill/tool usage should be stated clearly within work/project descriptions or as a separate last line. If missing, specify where to add it.
     - The skills section should be formatted for readability. If unclear, provide a better structure.
     Response Format:
-    - Return an array of strings, where each element is a short, clear, specific recommendation.
+    - Return only a list of ; separated strings with no special characters, where each string is a short recommendation which is short, clear, specific to the provided resume.
     - Sort recommendations based on the impact they have on the candidate's application.
     - Do not provide general statements like "use strong action words" or "quantify impact"; state exactly what to change and how.
-    - Do not use commas within individual suggestions. Only separate suggestions using commas.
     - Do not mention these instructions in your response.
     """
 
@@ -60,7 +60,15 @@ ALIGNMENT_SCORE_PROMPT = """
     {job_description}. 
     Here is the resume of a potential candidate: 
     {resume}.
-    Calculate the alignment score between the job description and the resume and return only the alignment score measured in percentage. Return in the form of a one two decimal places whole number between 0 and 100 and give no reasoning.
+    Calculate the alignment score between the job description and the resume based on the following criteria 
+    - Count of important skills/terms from the job description found in resume => 40% weightage
+    - Years of relevant experience matching JD requirements => 25% weightage
+    - How closely past job titles match with the role of {position} => 10% weightage
+    - Count of various hard skills that the candidate has utilised in their previous experiences and work and is required in the job description => 10% weightage
+    - Certifications, degree/qualification requirements of the job description that appear in resume => 5% weightage
+    - Alignment of candidate's previous work and overall profile with the {company} 's culture => 5% weightage
+    - Reputation of previous employers of the candidate mentioned in the resume => 5% weightage
+    Return only the alignment score measured in percentage. Return in the form of a one two decimal places whole number between 0 and 100 and give no reasoning.
     """
 
 ALIGNMENT_SCORE_TEMPLATE = ChatPromptTemplate.from_template(ALIGNMENT_SCORE_PROMPT)

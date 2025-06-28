@@ -152,15 +152,14 @@ def summarize_resume():
 def improve_resume():
 
     resume = request.files['resume']
-    print("Recieved resume for improvement analysis")
+    # print("Recieved resume for improvement analysis")
     resume_text = get_resume_text(resume)
     prompt = GENERAL_RESUME_IMPROVEMENT_TEMPLATE.format(resume=resume_text)
     improvements = chatbot.generate_content(contents=prompt).text
-    improvements = improvements.replace("```", "")
-    improvements = improvements.replace("[", "")
-    improvements = improvements.replace("]", "")
-    improvements = improvements.split(",")
-    improvements = [i.replace("\"", "") for i in improvements]
+    # improvements = improvements.replace("```", "")
+    # improvements = improvements.replace("]", "")
+    improvements = improvements.split(";")
+    # improvements = [i.replace("\"", "") for i in improvements]
     return jsonify({"improvements": improvements})
 
 @app.route("/generate-cover-letter", methods=["POST"])
