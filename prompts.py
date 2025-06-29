@@ -49,7 +49,10 @@ JOB_TITLE_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(JOB_TITLE_EXTRA
 COMPANY_EXTRACTION_PROMPT = """
     The job description the candidate is applying for
     {job_description}
-    Extract the company name from the job description and return it in one line string.
+    Extract the exact company name from the job description and return it in one line string. 
+    Return UNSPECIFIED as the string if:
+    - the exact company name cannot be extracted from the job description.
+    - the description does not explicity mention the company name and instead provides a vague category or description of the company
     """
 
 COMPANY_NAME_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_EXTRACTION_PROMPT)
@@ -75,6 +78,7 @@ ALIGNMENT_SCORE_TEMPLATE = ChatPromptTemplate.from_template(ALIGNMENT_SCORE_PROM
 
 COMPANY_DOMAIN_EXTRACTION_PROMPT = """
     Return the domain name of {company} in one line string without quotations, only the domain.
+    Return UNSPECIFIED as the string if the company name is UNSPECIFIED.
     """
 
 COMPANY_DOMAIN_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_DOMAIN_EXTRACTION_PROMPT)
