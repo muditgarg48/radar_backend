@@ -79,7 +79,7 @@ def process_job_description():
 
 @app.route('/get-resume-alignment-score', methods=["POST"])
 def get_resume_alignment_score():
-    if "resume" not in request.files:
+    if "resume" not in request.form:
         return jsonify({"error": "No resume provided"}), 400
     elif "jd" not in request.form:
         return jsonify({"error": "No job description provided"}), 400
@@ -88,8 +88,7 @@ def get_resume_alignment_score():
     elif "company" not in request.form:
         return jsonify({"error": "Job description not processed to get company name"}), 400
     
-    resume = request.files['resume']
-    resume_text = get_resume_text(resume)
+    resume_text = request.form.get("resume")
     jd = request.form.get("jd")
     position = request.form.get("position")
     company = request.form.get("company")
@@ -139,9 +138,8 @@ def summarize_resume():
         {context}
     """
 
-    resume = request.files['resume']
-    print("Recieved resume for summarisation")
-    resume_text = get_resume_text(resume)
+    # print("Recieved resume for summarisation")
+    resume_text = request.form.get("resume")
     prompt_template = ChatPromptTemplate.from_template(prompt_context)
     prompt = prompt_template.format(context=resume_text)
     summary = chatbot.generate_content(contents=prompt)
@@ -151,9 +149,8 @@ def summarize_resume():
 @app.route("/improve-resume", methods=["POST"])
 def improve_resume():
 
-    resume = request.files['resume']
+    resume_text = request.form.get("resume")
     # print("Recieved resume for improvement analysis")
-    resume_text = get_resume_text(resume)
     prompt = GENERAL_RESUME_IMPROVEMENT_TEMPLATE.format(resume=resume_text)
     improvements = chatbot.generate_content(contents=prompt).text
     # improvements = improvements.replace("```", "")
@@ -167,7 +164,7 @@ def generate_cover_letter():
 
     # data = request.get_json()
 
-    if "resume" not in request.files:
+    if "resume" not in request.form:
         return jsonify({"error": "No resume provided"}), 400
     elif "jd" not in request.form:
         return jsonify({"error": "No job description provided"}), 400
@@ -181,8 +178,7 @@ def generate_cover_letter():
     else:
         context = request.form.get("context")
     
-    resume = request.files['resume']
-    resume_text = get_resume_text(resume)
+    resume_text = request.form.get("resume")
     jd = request.form.get("jd")
     position = request.form.get("position")
     company = request.form.get("company")
@@ -206,7 +202,7 @@ def generate_additional_msg():
 
     # data = request.get_json()
 
-    if "resume" not in request.files:
+    if "resume" not in request.form:
         return jsonify({"error": "No resume provided"}), 400
     elif "jd" not in request.form:
         return jsonify({"error": "No job description provided"}), 400
@@ -220,8 +216,7 @@ def generate_additional_msg():
     else:
         context = request.form.get("context")
     
-    resume = request.files['resume']
-    resume_text = get_resume_text(resume)
+    resume_text = request.form.get("resume")
     # jd = data["jd"]
     jd = request.form.get("jd")
     # position = data["position"]
