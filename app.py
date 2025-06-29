@@ -155,7 +155,8 @@ def improve_resume():
     improvements = chatbot.generate_content(contents=prompt).text
     # improvements = improvements.replace("```", "")
     # improvements = improvements.replace("]", "")
-    improvements = improvements.split(";")
+    improvements_json = improvements.replace("```", "")[4:]
+    improvements = json.loads(improvements_json)
     # improvements = [i.replace("\"", "") for i in improvements]
     return jsonify({"improvements": improvements})
 

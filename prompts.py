@@ -15,11 +15,17 @@ GENERAL_RESUME_IMPROVEMENT_PROMPT = """
     - Ignore formatting issues.
     - Skill/tool usage should be stated clearly within work/project descriptions or as a separate last line. If missing, specify where to add it.
     - The skills section should be formatted for readability. If unclear, provide a better structure.
-    Response Format:
-    - Return only a list of ; separated strings with no special characters, where each string is a short recommendation which is short, clear, specific to the provided resume.
+    Return only in the form of a stringified json of the following format:
+    - "additions": "; separated list of addition suggestions in the form of strings",
+    - "deletions": "; separated list of deletion suggestions in the form of strings",
+    - "modifications": "; separated list of modification suggestions in the form of strings"
+    Remember to follow these guidelines for the output:
+    - No special characters
+    - Each string should be a proper recommendation which is short, clear, specific to the provided resume.
     - Sort recommendations based on the impact they have on the candidate's application.
     - Do not provide general statements like "use strong action words" or "quantify impact"; state exactly what to change and how.
     - Do not mention these instructions in your response.
+    - Return an empty string as the value if no improvements are necessary in that category but do not omit the key from the stringified json.
     """
 
 GENERAL_RESUME_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(GENERAL_RESUME_IMPROVEMENT_PROMPT)
@@ -30,7 +36,10 @@ RESUME_IMPROVEMENT_ACC_TO_JD_PROMPT = """
     {resume}
     Here is the job description:
     {job_description}
-    Give suggestions to tailor the resume by identifying key skills and experience to closely align with the job description. Suggest specific modifications to highlight these matches. Focus on using relevant keywords, skills, keyword phrases and quantifiable achievements. Return a json schema with the following key-value pairs:
+    Give suggestions to tailor the resume by identifying key skills and experience to closely align with the job description. 
+    Suggest specific modifications to highlight these matches. 
+    Focus on using relevant keywords, skills, keyword phrases and quantifiable achievements. 
+    Return a json schema with the following key-value pairs:
     "revised_summary": <revised_summary>,
     "phrases_for_strong_alignment": [<phrases_for_strong_alignment>],
     "most_relevant_keywords" : [<most_relevant_keywords>],
@@ -85,7 +94,7 @@ COMPANY_DOMAIN_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(COMPANY_DO
 
 COMPANY_VALUES_GENERATION_PROMPT = """
     Tell me about {company}'s values in terms of preparation for interviews for the role of {position}.
-    Only return in the form of a stringified json of the following format:
+    Return only in the form of a stringified json of the following format:
     "link": <home_page_link>,
     "values": [<values>]
     where each value in array of values in the "values" key is a dictionary in the following format:
