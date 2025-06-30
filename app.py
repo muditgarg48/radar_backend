@@ -133,18 +133,14 @@ def get_company_values():
 @app.route("/summarize-resume", methods=["POST"])
 def summarize_resume():
 
-    prompt_context = """
-        Summarise this resume:
-        {context}
-    """
-
     # print("Recieved resume for summarisation")
     resume_text = request.form.get("resume")
-    prompt_template = ChatPromptTemplate.from_template(prompt_context)
-    prompt = prompt_template.format(context=resume_text)
-    summary = chatbot.generate_content(contents=prompt)
+    prompt = SUMMARISE_RESUME_TEMPLATE.format(resume=resume_text)
+    summary = chatbot.generate_content(contents=prompt).text
+    summary_json = summary.replace("```", "")[4:]
+    summary = json.loads(summary_json)
     # print(summary.text)
-    return jsonify({"summary": summary.text})
+    return jsonify({"summary": summary})
 
 @app.route("/improve-resume", methods=["POST"])
 def improve_resume():

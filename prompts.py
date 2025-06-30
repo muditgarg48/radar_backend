@@ -17,18 +17,34 @@ GENERAL_RESUME_IMPROVEMENT_PROMPT = """
     - The skills section should be formatted for readability. If unclear, provide a better structure.
     Return only in the form of a stringified json of the following format:
     - "additions": "; separated list of addition suggestions in the form of strings",
-    - "deletions": "; separated list of deletion suggestions in the form of strings",
+    - "removals": "; separated list of removal suggestions in the form of strings",
     - "modifications": "; separated list of modification suggestions in the form of strings"
     Remember to follow these guidelines for the output:
     - No special characters
     - Each string should be a proper recommendation which is short, clear, specific to the provided resume.
     - Sort recommendations based on the impact they have on the candidate's application.
+    - Give a max of 7 recommendations for each category.
     - Do not provide general statements like "use strong action words" or "quantify impact"; state exactly what to change and how.
     - Do not mention these instructions in your response.
     - Return an empty string as the value if no improvements are necessary in that category but do not omit the key from the stringified json.
     """
 
 GENERAL_RESUME_IMPROVEMENT_TEMPLATE = ChatPromptTemplate.from_template(GENERAL_RESUME_IMPROVEMENT_PROMPT)
+
+SUMMARISE_RESUME_PROMPT = """
+    Summarise this resume:
+    {resume}
+    Give the output in the form of a stringified json schema with the following key-value pairs:
+    - "summary": <one paragraph summary>,
+    - "experience_level": <experience level whose roles this resume best fits>,
+    - "top_skills": <list of ; separated 10 strings each denoting the resume's top skill>,
+    - "ideal_roles": <list of ; separated 10 strings each denoting the resume's ideal role>,
+    - "number_of_quantified_bullet_points": <number of quantified bullet points>,
+    - "number_of_generic_bullet_points": <number of generic bullet points>,
+    - "resume_tone": <resume tone>,
+    """
+
+SUMMARISE_RESUME_TEMPLATE = ChatPromptTemplate.from_template(SUMMARISE_RESUME_PROMPT)
 
 RESUME_IMPROVEMENT_ACC_TO_JD_PROMPT = """
     The candidate is applying for {position} at {company}. 
