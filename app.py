@@ -40,13 +40,15 @@ def process_job_description():
     job_title = chatbot.generate_content(contents=prompt).text.strip()
     prompt = COMPANY_NAME_EXTRACTION_TEMPLATE.format(job_description=job_description_text)
     company_name = chatbot.generate_content(contents=prompt).text.strip()
+    
     prompt = KEYWORD_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     keywords = chatbot.generate_content(contents=prompt).text
-    keywords = keywords.split(";")
+    keywords = keywords.replace("```", "")[4:]
+    keywords = json.loads(keywords)
+    
     prompt = TO_BE_NOTED_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     notes = chatbot.generate_content(contents=prompt).text
-
-    notes = notes.replace("```", "")[5:]
+    notes = notes.replace("```", "")[4:]
     notes = json.loads(notes)
     salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
     experience_level = notes["experience_level"] if "experience_level" in notes else None
@@ -125,7 +127,7 @@ def get_company_values():
 
     prompt = COMPANY_VALUES_GENERATION_TEMPLATE.format(company=company, position=position)
     values_data = chatbot.generate_content(contents=prompt).text
-    values_data = values_data.replace("```", "")[5:]
+    values_data = values_data.replace("```", "")[4:]
     values_data = json.loads(values_data)
 
     return jsonify(values_data)

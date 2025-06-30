@@ -125,8 +125,17 @@ KEYWORD_EXTRACTION_PROMPT = """
     The job is {position} at {company}. 
     Here is the job description: 
     {job_description}. 
-    Extract the keywords and keyword phrases that should be in the applicants' resume from the job description. The keywords should include each and every hard and soft skills, keywords and keyword phrases that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly and help the candidate's resume tank highly on ATS. Do not give the most obvious keywords like the job title. 
-    Return only in the form of ; separated strings and no special characters and proper captialization. 
+    Extract the hard skills, soft skills and other priority keywords and keyword phrases that should be in the applicants' resume from the job description. 
+    These should include each and every keyword that are required for the role and should be highlighted in the application form so that the applicant matches the job description perfectly and help the candidate's resume tank highly on ATS. 
+    Do not give the most obvious keywords like the job title. 
+    Return in the form of a stringified json with the following format:
+    - "hard_skills": "<; separated strings where each string is a hard skill required in the candidate's resume or application according to the job description>"
+    - "soft_skills": "<; separated strings where each string is a soft skill required in the candidate's resume or application according to the job description>"
+    - "other_keywords": "<; separated strings where each string is a keyword or keyword phrase required in the candidate's resume or application according to the job description and wasn't mentioned in the hard skills or soft skills>"
+    Remember to also follow the following guidelines:
+    - No special characters and proper capitalization.
+    - Acronyms should be properly capitalized.
+    - Make sure to make all the soft skills and other keywords as nouns and not verbs.
     """
 
 KEYWORD_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(KEYWORD_EXTRACTION_PROMPT)
