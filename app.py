@@ -50,6 +50,7 @@ def process_job_description():
     notes = chatbot.generate_content(contents=prompt).text
     notes = notes.replace("```", "")[4:]
     notes = json.loads(notes)
+    special_requirements = notes["special_requirements"] if "special_requirements" in notes else None
     salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
     experience_level = notes["experience_level"] if "experience_level" in notes else None
     visa_sponsorship = notes["visa_sponsorship"] if "visa_sponsorship" in notes else None
@@ -75,6 +76,7 @@ def process_job_description():
         "visa_sponsorship": visa_sponsorship,
         "team_name": team_name,
         "location": location,
+        "special_requirements": special_requirements,
         "benefits": benefits,
         "notes": other_noteworthy_details,
     })

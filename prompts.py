@@ -97,6 +97,7 @@ ALIGNMENT_SCORE_PROMPT = """
     - Certifications, degree/qualification requirements of the job description that appear in resume => 5% weightage
     - Alignment of candidate's previous work and overall profile with the {company} 's culture => 5% weightage
     - Reputation of previous employers of the candidate mentioned in the resume => 5% weightage
+    - Mismatching or unmentioned special requirements like clearances, degree requirements (ignoring travel requirements) => -40% weightage
     Return only the alignment score measured in percentage. Return in the form of a one two decimal places whole number between 0 and 100 and give no reasoning.
     """
 
@@ -137,6 +138,12 @@ KEYWORD_EXTRACTION_PROMPT = """
     - No special characters and proper capitalization.
     - Acronyms should be properly capitalized.
     - Make sure to make all the soft skills and other keywords as nouns and not verbs.
+    - Ignore the following details for the "other_keywords" output:
+        - certifications, qualifications or professional licenses and accreditations
+        - clearances
+        - degree requirements
+        - travel requirements
+        - required work mode: hybrid, onsite or remote
     """
 
 KEYWORD_EXTRACTION_TEMPLATE = ChatPromptTemplate.from_template(KEYWORD_EXTRACTION_PROMPT)
@@ -147,18 +154,20 @@ TO_BE_NOTED_EXTRACTION_PROMPT = """
     {job_description}. 
     Extract all the extra vital information that the candidate must note while applying for this role. Do not include any points that are not specified in the job description or cannot be deduced from the job description.
     Return in the form of a stringified json with the following keys and exclude those keys whose information is not present in the job description:
-    - "salary_bracket": <string of salary range mentioned>,
-    - "experience_level": <string of experience level including any years of experience range mentioned>,
+    - "salary_bracket": <string of ; separated salary ranges mentioned>,
+    - "experience_level": <string of ; separated experience levels including any years of experience range mentioned (do not include job title unless there are multiple job titles)>,
     - "visa_sponsorship": <boolean of whether visa sponsorship will be provided or not>,
     - "location" <string of location of the role>,
     - "team_name": <string of exact name of the team in which this role is based>,
-    - "benefits": <string of semicolon separated mentioned specific most relevant benefits provided with the role>,
-    - "other_noteworthy_details": <string of semicolon separated other noteworthy details apart from the keys mentioned which can include: 
+    - "benefits": <string of ; separated mentioned specific most relevant benefits provided with the role>,
+    - "special_requirements": string of ; separated mentioned non-negotiable specific special requirements of the role which could include:
+        - certifications, qualifications or professional licenses and accreditations
+        - clearances
+        - degree requirements
+        - travel requirements
+        - required work mode: hybrid, onsite or remote
+    - "other_noteworthy_details": <string of ; separated other noteworthy details apart from the keys mentioned which can include: 
         - if there will be any relocation assistance
-        - the work-mode for the role: hybrid or onsite or remote
-        - if there are any travel requirements
-        - if there is any minimum degree requirement
-        - if there are any specific certifications required
         - if there are any growth opportunities
         - any benefits and perks provided with the role
         - the contract type for the role: permanent or temprorary or contract-based
