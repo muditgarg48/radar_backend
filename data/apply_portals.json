@@ -35,6 +35,16 @@
         ]
     },
     {
+        "category": "AGENCIES",
+        "data": [
+            {
+                "name": "Oliver James",
+                "portal_link": "https://www.oliverjames.com/jobs",
+                "domain": "oliverjames.com"
+            }
+        ]
+    },
+    {
         "category": "TECH",
         "data": [
             {
@@ -368,6 +378,11 @@
         "category": "FINANCE",
         "data": [
             {
+                "name": "Capital One",
+                "portal_link": "https://www.capitalonecareers.com/",
+                "domain": "capitalone.com"
+            },
+            {
                 "name": "BlackRock",
                 "portal_link": "https://careers.blackrock.com/search-jobs",
                 "domain": "blackrock.com"
@@ -416,6 +431,31 @@
                 "name": "JPMorgan Chase",
                 "portal_link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1002/jobs",
                 "domain": "jpmorgan.com"
+            },
+            {
+                "name": "Citi",
+                "portal_link": "https://citi.wd5.myworkdayjobs.com/2",
+                "domain": "citi.com"
+            }
+        ]
+    },
+    {
+        "category": "TRADING",
+        "data": [
+            {
+                "name": "Optiver",
+                "portal_link": "https://optiver.com/working-at-optiver/career-opportunities/",
+                "domain": "optiver.com"
+            }, 
+            {
+                "name": "HRT",
+                "portal_link": "https://www.hudsonrivertrading.com/careers/",
+                "domain": "hudsonrivertrading.com"
+            },
+            {
+                "name": "SIG",
+                "portal_link": "https://www.sig.com/careers/",
+                "domain": "sig.com"
             }
         ]
     },
