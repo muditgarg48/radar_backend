@@ -221,6 +221,11 @@
                 "name": "eBay",
                 "portal_link": "https://ebay.wd5.myworkdayjobs.com/en-US/apply",
                 "domain": "ebay.com"
+            }, 
+            {
+                "name": "Ericsson",
+                "portal_link": "https://jobs.ericsson.com/careers?page=1&jobPipeline=careersite&start=0&pid=563121765973181&sort_by=timestamp&sort_order=desc",
+                "domain": "ericsson.com"
             }
         ]
     },

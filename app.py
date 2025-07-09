@@ -35,51 +35,54 @@ def process_job_description():
         return jsonify({"error": "No job description provided"}), 400
 
     job_description_text = data["jd"]
-
+    
     prompt = JOB_TITLE_EXTRACTION_TEMPLATE.format(job_description=job_description_text)
     job_title = chatbot.generate_content(contents=prompt).text.strip()
     prompt = COMPANY_NAME_EXTRACTION_TEMPLATE.format(job_description=job_description_text)
     company_name = chatbot.generate_content(contents=prompt).text.strip()
-    
     prompt = KEYWORD_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     keywords = chatbot.generate_content(contents=prompt).text
-    keywords = keywords.replace("```", "")[4:]
-    keywords = json.loads(keywords)
-    
     prompt = TO_BE_NOTED_EXTRACTION_TEMPLATE.format(position=job_title, company=company_name, job_description=job_description_text)
     notes = chatbot.generate_content(contents=prompt).text
-    notes = notes.replace("```", "")[4:]
-    notes = json.loads(notes)
-    special_requirements = notes["special_requirements"] if "special_requirements" in notes else None
-    salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
-    experience_level = notes["experience_level"] if "experience_level" in notes else None
-    visa_sponsorship = notes["visa_sponsorship"] if "visa_sponsorship" in notes else None
-    location = notes["location"] if "location" in notes else None
-    team_name = notes["team_name"] if "team_name" in notes else None
-    if "benefits" in notes:
-        benefits = notes["benefits"] 
-        benefits = benefits.split(";")
-    else:
-        benefits = None
-    if "other_noteworthy_details" in notes:
-        other_noteworthy_details = notes["other_noteworthy_details"] 
-        other_noteworthy_details = other_noteworthy_details.split(";")
-    else:
-        other_noteworthy_details = None
-
-    return jsonify({
-        "title": job_title,
-        "company": company_name,
-        "keywords": keywords,
-        "salary_bracket": salary_bracket,
-        "experience_level": experience_level,
-        "visa_sponsorship": visa_sponsorship,
-        "team_name": team_name,
-        "location": location,
-        "special_requirements": special_requirements,
-        "benefits": benefits,
-        "notes": other_noteworthy_details,
-    })
+    
+    try:
+        keywords = keywords.replace("```", "")[4:]
+        keywords = json.loads(keywords)
+        notes = notes.replace("```", "")[4:]
+        notes = json.loads(notes)
+        special_requirements = notes["special_requirements"] if "special_requirements" in notes else None
+        salary_bracket = notes["salary_bracket"] if "salary_bracket" in notes else None
+        experience_level = notes["experience_level"] if "experience_level" in notes else None
+        visa_sponsorship = notes["visa_sponsorship"] if "visa_sponsorship" in notes else None
+        location = notes["location"] if "location" in notes else None
+        team_name = notes["team_name"] if "team_name" in notes else None
+        if "benefits" in notes  and notes["benefits"]:
+            benefits = notes["benefits"]
+            benefits = benefits.split(";")
+        else:
+            benefits = None
+        if "other_noteworthy_details" in notes and notes["other_noteworthy_details"]:
+            other_noteworthy_details = notes["other_noteworthy_details"] 
+            other_noteworthy_details = other_noteworthy_details.split(";")
+        else:
+            other_noteworthy_details = None
+        return jsonify({
+            "title": job_title,
+            "company": company_name,
+            "keywords": keywords,
+            "salary_bracket": salary_bracket,
+            "experience_level": experience_level,
+            "visa_sponsorship": visa_sponsorship,
+            "team_name": team_name,
+            "location": location,
+            "special_requirements": special_requirements,
+            "benefits": benefits,
+            "notes": other_noteworthy_details,
+        })
+    except Exception as error:
+        print("Responses after job description processing:")
+        print(job_title, company_name, keywords, notes)
+        return jsonify({"error": "Error processing job description: "+str(error)}), 400
 
 @app.route('/get-resume-alignment-score', methods=["POST"])
 def get_resume_alignment_score():
