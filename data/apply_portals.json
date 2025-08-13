@@ -226,6 +226,11 @@
                 "name": "Ericsson",
                 "portal_link": "https://jobs.ericsson.com/careers?page=1&jobPipeline=careersite&start=0&pid=563121765973181&sort_by=timestamp&sort_order=desc",
                 "domain": "ericsson.com"
+            }, 
+            {
+                "name": "Pintrest",
+                "portal_link": "https://www.pinterestcareers.com/jobs/",
+                "domain": "pinterest.com"
             }
         ]
     },
@@ -236,6 +241,10 @@
                 "name": "Stripe",
                 "portal_link": "https://stripe.com/jobs/search",
                 "domain": "stripe.com"
+            },
+            {
+                "name": "Mastercard",
+                "portal_link": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers"
             },
             {
                 "name": "Coinbase",
