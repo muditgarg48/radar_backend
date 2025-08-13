@@ -244,7 +244,8 @@
             },
             {
                 "name": "Mastercard",
-                "portal_link": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers"
+                "portal_link": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers",
+                "domain": "mastercard.com"
             },
             {
                 "name": "Coinbase",
