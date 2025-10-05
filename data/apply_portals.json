@@ -236,6 +236,11 @@
                 "name": "Pintrest",
                 "portal_link": "https://www.pinterestcareers.com/jobs/",
                 "domain": "pinterest.com"
+            }, 
+            {
+                "name": "Docusign",
+                "portal_link": "https://careers.docusign.com/jobs",
+                "domain": "docusign.com"
             }
         ]
     },
