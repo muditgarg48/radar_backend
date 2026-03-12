@@ -9,5 +9,5 @@ def get_embedding_function():
 
 def get_chat_model():
     genai.configure(api_key=API_KEY)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     return model

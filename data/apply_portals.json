@@ -461,6 +461,11 @@
                 "name": "Citi",
                 "portal_link": "https://citi.wd5.myworkdayjobs.com/2",
                 "domain": "citi.com"
+            },
+            {
+                "name": "Bloomberg",
+                "portal_link": "https://bloomberg.avature.net/careers/SearchJobs",
+                "domain": "bloomberg.com"
             }
         ]
     },
